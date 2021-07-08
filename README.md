@@ -34,3 +34,20 @@ Execute no terminal ./server
 Para testar os arquivos individualmente
 1.  ```npm test -- ${nomeDoArquivo}```
 
+--------------------------------------------------------------------------
+## Estrutura de Pastas
+```
+server
+    ├───config
+    ├───controllers
+    ├───db
+    ├───helpers
+    ├───models
+    ├───repository
+    ├───routes
+    └───test
+        ├───helpers
+        ├───models
+        └───repository
+```
+
