@@ -4,7 +4,7 @@ class UserRepository{
 
     getDB(){
         return new Promise((resolve, reject) =>{
-            const reader = fs.createReadStream('../server/db/db.json');
+            const reader = fs.createReadStream('db/db.json');
             reader.on('data', (result) =>{
                 var db = JSON.parse(result.toString());
                 resolve(db);
@@ -87,7 +87,7 @@ class UserRepository{
                 var db = await this.getDB();
                 db.push(user)
                 db = JSON.stringify(db);
-                const writer = fs.createWriteStream('../server/db/db.json');
+                const writer = fs.createWriteStream('db/db.json');
                 writer.write(db);
                 resolve(true);
             } catch (error) {
@@ -110,7 +110,7 @@ class UserRepository{
                     return i;
                 });
                 const newDB = JSON.stringify(update);
-                const writer = fs.createWriteStream('../server/db/db.json');
+                const writer = fs.createWriteStream('db/db.json');
                 writer.write(newDB);
                 resolve(true);
             } catch (error) {
@@ -130,7 +130,7 @@ class UserRepository{
                     return i;
                 })
                 const newDB = JSON.stringify(update);
-                const writer = fs.createWriteStream('../server/db/db.json');
+                const writer = fs.createWriteStream('db/db.json');
                 writer.write(newDB);
                 resolve(true);
             } catch (error) {
@@ -152,7 +152,7 @@ class UserRepository{
                     return i;
                 });
                 const newDB = JSON.stringify(update);
-                const writer = fs.createWriteStream('../server/db/db.json');
+                const writer = fs.createWriteStream('db/db.json');
                 writer.write(newDB);
                 resolve(true);
             } catch (error) {
@@ -164,7 +164,7 @@ class UserRepository{
 
     getId(){
         return new Promise((resolve, reject) =>{
-            const reader = fs.createReadStream('../server/db/id.json');
+            const reader = fs.createReadStream('db/id.json');
             reader.on('data', (result) =>{
                 const id = JSON.parse(result.toString());
                 const newID = parseInt(id.id) + 1;
@@ -185,7 +185,7 @@ class UserRepository{
                     "id": newID
                 };
                 obj = JSON.stringify(obj);
-                const writer = fs.createWriteStream('../server/db/id.json');
+                const writer = fs.createWriteStream('db/id.json');
                 writer.write(obj);
                 resolve(true);
             } catch (error) {
@@ -198,7 +198,7 @@ class UserRepository{
     createDB(){
         return new Promise((resolve, reject) =>{
             try {
-                const writer = fs.createWriteStream('../server/db/db.json');
+                const writer = fs.createWriteStream('db/db.json');
                 writer.write('');
                 const array = [{"id":1074,"email":"teste@teste.com.br","password":"testando","deleted":true,"create_at":"2021-07-08T15:30:48.512Z","update_at":null},
                             {"id":1072,"email":"teste1@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:31:21.325Z","update_at":null},

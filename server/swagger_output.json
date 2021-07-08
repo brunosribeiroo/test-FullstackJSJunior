@@ -19,7 +19,11 @@
         "tags": [],
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/v1/users": {
@@ -47,10 +51,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "seuemail@mail.com"
                 },
                 "senha": {
-                  "example": "any"
+                  "example": "suasenha"
                 }
               }
             }
@@ -117,10 +121,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "any"
+                  "example": "seuemail@mail.com"
                 },
                 "senha": {
-                  "example": "any"
+                  "example": "suasenha"
                 }
               }
             }
