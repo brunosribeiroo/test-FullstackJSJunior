@@ -20,8 +20,7 @@ class UserRepository{
             try {
                 const db = await this.getDB();
                 var users = []
-                db.find(element => {
-                    var i = JSON.parse(element);
+                db.find(i => {
                     if(i.deleted == false){
                         users.push(i);
                     }
@@ -38,8 +37,7 @@ class UserRepository{
         return new Promise(async (resolve, reject) =>{
             try {
                 const db = await this.getDB();
-                var user = db.find(element =>{
-                    var i = JSON.parse(element);
+                var user = db.find(i =>{
                     if(i.deleted == false){
                         if(i.id == id)
                         return i;
@@ -48,7 +46,6 @@ class UserRepository{
                 if(user == undefined){
                     resolve('Usuário não encontrado')
                 } else {
-                    user = JSON.parse(user);
                     resolve(user);
                 }
             } catch (error) {
@@ -62,16 +59,19 @@ class UserRepository{
         return new Promise(async (resolve, reject) =>{
             try {
                 const db = await this.getDB();
-                var user = db.users.find(i =>{
-                    if(i.deleted == false){
-                        if(i.email == email)
-                        return i;
+                var user = db.find(i =>{
+                    if(i.email == email){
+                        if(i.deleted == true){
+                            resolve(true)
+                        }
+                        if(i.deleted == false){
+                            return i;
+                        }
                     }
                 })
                 if(user == undefined){
                     resolve(false)
                 } else {
-                    user = JSON.parse(user);
                     resolve(user);
                 }
             } catch (error) {
@@ -84,13 +84,11 @@ class UserRepository{
     createUser(user){
         return new Promise(async (resolve, reject) =>{
             try {
-                //const obj = JSON.stringify(user);
                 var db = await this.getDB();
-                var newDB = db.users.push(user);
-                var dbteste = JSON.stringify(newDB);
-                console.log(dbteste)
+                db.push(user)
+                db = JSON.stringify(db);
                 const writer = fs.createWriteStream('../server/db/db.json');
-                writer.write(dbteste);
+                writer.write(db);
                 resolve(true);
             } catch (error) {
                 console.error('erro ao cadastrar usuario no DB', error);
@@ -193,6 +191,25 @@ class UserRepository{
             } catch (error) {
                 console.error('Erro ao atualizar o ID no DB', error);
                 reject('Erro ao atualizar o ID no DB ' + error)
+            }
+        })
+    }
+
+    createDB(){
+        return new Promise((resolve, reject) =>{
+            try {
+                const writer = fs.createWriteStream('../server/db/db.json');
+                writer.write('');
+                const array = [{"id":1074,"email":"teste@teste.com.br","password":"testando","deleted":true,"create_at":"2021-07-08T15:30:48.512Z","update_at":null},
+                            {"id":1072,"email":"teste1@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:31:21.325Z","update_at":null},
+                            {"id":1030,"email":"teste2@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:34:45.742Z","update_at":null},
+                            {"id":1064,"email":"teste3@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:43:45.385Z","update_at":null}];
+                const db = JSON.stringify(array);
+                writer.write(db);
+                resolve(true);
+            } catch (error) {
+                console.error('Erro ao criar DB', error);
+                reject('Erro ao criar DB ' + error)
             }
         })
     }

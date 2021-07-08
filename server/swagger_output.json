@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Test Fullstack API",
-    "description": "API para consulta, cadastro, edição e exclusão de usuários."
+    "title": "REST API",
+    "description": ""
   },
   "host": "localhost:3000",
   "basePath": "/",
@@ -17,7 +17,7 @@
     "/": {
       "get": {
         "tags": [],
-        "description": "Página inicial",
+        "description": "",
         "parameters": [],
         "responses": {}
       }
@@ -25,7 +25,7 @@
     "/api/v1/users": {
       "get": {
         "tags": [],
-        "description": "Busca todos os usuários que não foram deletados",
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -38,7 +38,7 @@
       },
       "post": {
         "tags": [],
-        "description": "Adiciona um novo usuário",
+        "description": "",
         "parameters": [
           {
             "name": "obj",
@@ -47,10 +47,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "seuemail@mail.com"
+                  "example": "any"
                 },
                 "senha": {
-                  "example": "testando"
+                  "example": "any"
                 }
               }
             }
@@ -67,7 +67,7 @@
       },
       "delete": {
         "tags": [],
-        "description": "Apaga todos os usuários, alterando a propriedade deleted para true",
+        "description": "",
         "parameters": [],
         "responses": {
           "200": {
@@ -82,7 +82,7 @@
     "/api/v1/users/{id}": {
       "get": {
         "tags": [],
-        "description": "Busca usuário por ID que não foi deletado",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -102,7 +102,7 @@
       },
       "put": {
         "tags": [],
-        "description": "Edita usuário por ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -117,10 +117,10 @@
               "type": "object",
               "properties": {
                 "email": {
-                  "example": "seuemail@mail.com"
+                  "example": "any"
                 },
                 "senha": {
-                  "example": "testando"
+                  "example": "any"
                 }
               }
             }
@@ -137,7 +137,7 @@
       },
       "delete": {
         "tags": [],
-        "description": "Apaga usuário por ID, alterando a propriedade deleted para true",
+        "description": "",
         "parameters": [
           {
             "name": "id",

@@ -1,1 +1,1 @@
-3
+[{"id":1074,"email":"teste@teste.com.br","password":"testando","deleted":true,"create_at":"2021-07-08T15:30:48.512Z","update_at":null},{"id":1072,"email":"teste1@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:31:21.325Z","update_at":null},{"id":1030,"email":"teste2@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:34:45.742Z","update_at":null},{"id":1064,"email":"teste3@teste.com.br","password":"testando","deleted":false,"create_at":"2021-07-08T15:43:45.385Z","update_at":null}]

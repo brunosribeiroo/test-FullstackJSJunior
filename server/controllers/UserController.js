@@ -51,7 +51,7 @@ class UserController{
             const id = req.params.id;
             const {email, senha} = req.body;
             await UserRepository.updateUserById(email, senha, id);
-            res.status(200).send(true)
+            res.status(200).send('Usuário editado com sucesso')
         } catch (error) {
             console.error('Erro ao editar usuário por ID', error);
             res.status(500).send({error: 'Erro ao editar usuário por ID'}) 

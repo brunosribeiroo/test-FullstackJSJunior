@@ -1,10 +1,6 @@
 const UserController = require("../controllers/UserController");
 
 module.exports = (app) =>{
-    app.get('/', (req, res) =>{
-        res.send('Bem vindo ao Teste Full Stack Junior')
-    });
-
     app.get('/api/v1/users', (req, res) =>{
         UserController.getUsersAll(req, res);
     });
