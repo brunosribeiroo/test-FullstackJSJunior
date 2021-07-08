@@ -1,3 +1,4 @@
+const ValidationParams = require('../helpers/ValidationParams');
 const User = require('../models/User');
 const UserRepository = require('../repository/UserRepository');
 
@@ -50,8 +51,25 @@ class UserController{
         try {
             const id = req.params.id;
             const {email, senha} = req.body;
-            await UserRepository.updateUserById(email, senha, id);
-            res.status(200).send('Usuário editado com sucesso')
+            await ValidationParams.validatesEmail(email);
+            const user = await UserRepository.getUserById(id);
+            if(user == false || user == undefined){
+                res.status(200).send({error:'Usuário não encontrado'});
+            }
+            if(user){
+                if(email == user.email){
+                    await UserRepository.updateUserById(email, senha, id);
+                    res.status(200).send('Usuário editado com sucesso')
+                }else {
+                    const mail = await UserRepository.getUserByEmail(email);
+                    if(mail == false){
+                        await UserRepository.updateUserById(email, senha, id);
+                        res.status(200).send('Usuário editado com sucesso')
+                    }else{
+                        res.status(200).send('Email já existe');
+                    }
+                }
+            }
         } catch (error) {
             console.error('Erro ao editar usuário por ID', error);
             res.status(500).send({error: 'Erro ao editar usuário por ID'}) 

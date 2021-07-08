@@ -104,7 +104,7 @@ class UserRepository{
                 var update = db.map(i =>{
                     if(i.id == id){
                         i.email = email;
-                        i.senha = senha;
+                        i.password = senha;
                         i.update_at = new Date();
                     }
                     return i;
