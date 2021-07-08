@@ -30,5 +30,5 @@ Para testar os arquivos individualmente
 1.  ```npm test -- ${nomeDoArquivo}```
 --------------------------------------------------------------------------
 ## Testes e Documentação
-[Swagger](http://localhost:3000/doc)
-#### http://localhost:3000/doc
+[Swagger](http://localhost:3000)
+#### http://localhost:3000
